@@ -15,7 +15,7 @@ class Player:
             'Mana': self.Mana,
             'Agility': self.Agility,
             'Magic': self.Magic
-        }
+        }   
 class Warrior(Player):
     def __init__(self, name):
         super().__init__(name, [10])

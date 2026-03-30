@@ -1,4 +1,7 @@
 import random
+from Combat import Combat
+from Enemies import Goblin, Orc, Troll
+
 
 
 class Scene:
@@ -63,7 +66,22 @@ class Shop(Scene):
         return "village"
     
 class Tavern(Scene):
+   def start(self,player): 
     print("Καλωσορισες στην ταβερνα, τι θελεις να κανεις;")
     print("1. Μιλα με τον ιδιοκτητη")  
     print("2. Μιλα με τους πελατες")
     print("3. Φύγε") 
+
+class Forest(Scene):
+    def start(self,player):
+        print("Μπαίνεις στο δάσος εντονη βλαστηση σε περιτρεγυριζει, ακουγονται φωνες αλλα δεν μπορεις να τις αναγνωρισεις!")
+        print("Ξαφνικα ενα πρασινο γκομπλιν πεφτει απο ενα δεντρο, εισαι αρκετα δυνατος για να το αντιμετωπισεις?!")
+        print("1. Μάχη")
+        print("2. Φύγε")
+        choice = input("Επέλεξε:     ")
+        if choice == "1":
+            enemy = Goblin()
+            combat = Combat(player, enemy)
+            result = combat.start_battle()
+            return result
+        

@@ -1,6 +1,6 @@
 from Player import  Warrior, Mage, Rogue
-from World import OpeningScene, Village , Shop
-from Combat import Combat
+from World import OpeningScene, Village , Shop , Tavern, Forest
+
 classes = { 
     '1': Warrior,
     '2': Mage,
@@ -10,7 +10,9 @@ classes = {
 scenes_map = {
     'opening_scene': OpeningScene(),
     'village': Village(),
-    'shop': Shop()
+    'shop': Shop(),
+    'tavern': Tavern(),
+    'forest': Forest()
 }
 
 print("Welcome to Ritual Stone!")
@@ -38,3 +40,4 @@ current_scene = 'opening_scene'
 while current_scene not in ['victory', 'defeat']:
     scene_obj = scenes_map[current_scene]
     current_scene = scene_obj.start(player)
+
