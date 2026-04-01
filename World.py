@@ -7,6 +7,8 @@ from Enemies import Goblin, Orc, Troll
 class Scene:
     def start(self,player):
         pass
+    def __init__(self):
+        self.is_fight_finished = False
 
 class OpeningScene(Scene):
     def start(self,player):
@@ -73,15 +75,35 @@ class Tavern(Scene):
     print("3. Φύγε") 
 
 class Forest(Scene):
+   
     def start(self,player):
-        print("Μπαίνεις στο δάσος εντονη βλαστηση σε περιτρεγυριζει, ακουγονται φωνες αλλα δεν μπορεις να τις αναγνωρισεις!")
-        print("Ξαφνικα ενα πρασινο γκομπλιν πεφτει απο ενα δεντρο, εισαι αρκετα δυνατος για να το αντιμετωπισεις?!")
-        print("1. Μάχη")
-        print("2. Φύγε")
-        choice = input("Επέλεξε:     ")
-        if choice == "1":
-            enemy = Goblin()
-            combat = Combat(player, enemy)
-            result = combat.start_battle()
-            return result
         
+        if not self.is_fight_finished:
+            print("Ξαφνικα ενα πρασινο γκομπλιν πεφτει απο ενα δεντρο, εισαι αρκετα δυνατος για να το αντιμετωπισεις?!")
+            print("1. Μάχη")
+            print("2. Φύγε")
+            choice = input("Επέλεξε:     ")
+            if choice == "1":
+                enemy = Goblin()
+                combat = Combat(player, enemy)
+                result = combat.start_battle()
+                if result == "victory":
+                    self.is_fight_finished = True
+            
+                elif result == "defeat":
+                    print("Πεθανες πατα enter για να επιστρεψεις στο χωριο")
+                    input("Press enter to continue")
+                    return "village"
+            
+            if self.is_fight_finished:
+                print("Κερδιζοντας το αγριο goblin βρισκεις ενα κλειδι ")
+                print("\n1. Παιρνεις το κλειδι \n2. Γυρνας στο χωριο")
+                choice = input()
+                while choice != "1" or choice != "2":
+                    print("Πρεπει να διαλεξεις σε '1' η '2'")
+                    choice = input("\n1. Παιρνεις το κλειδι \n2. Γυρνας στο χωριο")
+                    if choice == "1":
+                        break
+                    else:
+                        return "village"
+                

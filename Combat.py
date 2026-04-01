@@ -9,11 +9,11 @@ class Combat():
     def start_battle(self):
         print("-"*50)
         print(f"{self.player.name} VS {self.enemy.name:20}")
+        print(f"Health: {self.player.Health:<7} |    | Health: {self.enemy.health:>7}")
+        print(f"Mana:   {self.player.Mana:<7} |    | Mana:   {self.enemy.Mana:>7}")
         print("-"*50)
         while self.player.Health > 0 and self.enemy.health > 0:
-            print(f"{self.player.name:<15} | VS | {self.enemy.name:>15}")
-            print(f"Health: {self.player.Health:<7} |    | Health: {self.enemy.health:>7}")
-            print(f"Mana:   {self.player.Mana:<7} |    | Mana:   {self.enemy.Mana:>7}")
+            
             action = input("Επέλεξε κινηση: \n1. Attack\n2. Magic\n3. Run\nΕπέλεξε:     ")
             if action == "1":
                 damage = self.player.Attack + random.randint(-5, 5)
