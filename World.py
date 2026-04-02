@@ -4,6 +4,7 @@ from Enemies import Goblin, Orc, Troll
 
 
 
+
 class Scene:
     def start(self,player):
         pass
@@ -11,6 +12,8 @@ class Scene:
         self.is_fight_finished = False
 
 class OpeningScene(Scene):
+    
+
     def start(self,player):
         print("Ξυπνάς σε ένα πανδοχείο, το κεφάλι σου μπερδεμένο. Αναρωτιέσαι πώς βρέθηκες εδώ και τι συνέβη.")
         print("Βγαίνεις απο το δωμάτιο και πηγαινεις στην ιδιοκτήτη.")
