@@ -29,6 +29,10 @@ class OpeningScene(Scene):
 
 class Village(Scene):
     def start(self,player):
+        print("*"*50)
+        print("--ΧΩΡΙΟ--")
+        print("*"*50)
+        player.change_scene("village")
         choice = input("Φτάνεις στην κεντρικη πλατεια του χωριου. \nΜαγαζι: 1 \nΤαβερνα: 2 \nΔασος: 3\nΕπέλεξε:     ")
         if choice == "1":
             return "shop"
@@ -39,6 +43,9 @@ class Village(Scene):
 
 class Shop(Scene):
     def start(self,player):
+        print("*"*50)
+        print("--ΜΑΓΑΖΙ--")
+        print("*"*50)
         print("Καλωσορισες στο μαγαζι, τι θελεις να αγορασεις;")
         print(f"1. Potion of Strength {random.randint(10, 20)} gold")
         print(f"2. Potion of Defense {random.randint(10, 20)} gold")
@@ -72,6 +79,9 @@ class Shop(Scene):
     
 class Tavern(Scene):
    def start(self,player): 
+    print("*"*50)
+    print("--ΤΑΒΕΡΝΑ--")   
+    print("*"*50)
     print("Καλωσορισες στην ταβερνα, τι θελεις να κανεις;")
     print("1. Μιλα με τον ιδιοκτητη")  
     print("2. Μιλα με τους πελατες")
@@ -82,6 +92,11 @@ class Forest(Scene):
     def start(self,player):
         
         if not self.is_fight_finished:
+            print("*"*50)
+            print("--ΔΑΣΟΣ--")
+            print("")
+            print("*"*50)
+            player.change_scene("forest")
             print("Ξαφνικα ενα πρασινο γκομπλιν πεφτει απο ενα δεντρο, εισαι αρκετα δυνατος για να το αντιμετωπισεις?!")
             print("1. Μάχη")
             print("2. Φύγε")
@@ -113,7 +128,11 @@ class Forest(Scene):
                 
 class Cave(Scene):
     def start(self,player):
-        print("-"*50)
+        print("*"*50)
+        print("--ΣΠΗΛΙΑ--")
+        print("")
+        print("*"*50)
+        player.change_scene("cave")
         print("Εχωντας σκοτωσει το γκομπλιν και εχωντας το κλειδι, βρισκεσαι μπροστα σε μια σπηλιά.")
         print("Θα χρησιμοποιησεις το κλειδι για να την ανοιξεις; ")
         print("1. Ναι")
@@ -129,6 +148,11 @@ class Cave(Scene):
             
 class SecretRoom(Scene):
     def start(self,player):
+        print("*"*50)
+        print("--ΜΥΣΤΙΚΟ ΔΩΜΑΤΙΟ--")
+        print("")
+        print("*"*50)
+        player.change_scene("secret_room")
         print("Ανοιγοντας την πορτα της σπηλιας, αντικριζεις θησαυρους και μια δυσοιωνη ατμοσφαιρα.")
         if self.is_fight_finished == False:
             print("πλησιαζοντας τον θησαυρο, μια σκοτεινη φιγουρα εμφανιζεται και σε προκαλει σε μαχη.")

@@ -1,0 +1,15 @@
+# --- Python Cache ---
+__pycache__/
+*.pyc
+
+# --- Game Save Data ---
+save.json
+
+# --- Virtual Environments ---
+venv/
+env/
+.env
+
+# --- OS Generated Files ---
+Thumbs.db
+.DS_Store
