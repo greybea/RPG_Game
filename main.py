@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 from Player import Warrior , Mage , Rogue
 from World import OpeningScene, Village , Shop , Tavern, Forest
@@ -7,6 +8,15 @@ classes = {
     'Warrior': Warrior,
     'Mage': Mage,
     'Rogue': Rogue
+=======
+from Player import  Warrior, Mage, Rogue
+from World import OpeningScene, Village , Shop , Tavern, Forest , Cave , SecretRoom
+from Enemies import Goblin, Orc, Troll
+classes = { 
+    '1': Warrior,
+    '2': Mage,
+    '3': Rogue
+>>>>>>> Stashed changes
 }
 
 scenes_map = {
@@ -14,7 +24,9 @@ scenes_map = {
     'village': Village(),
     'shop': Shop(),
     'tavern': Tavern(),
-    'forest': Forest()
+    'forest': Forest(),
+    'cave': Cave(),
+    'secret_room': SecretRoom()
 }
 
 print("*"*50)

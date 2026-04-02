@@ -92,6 +92,7 @@ class Forest(Scene):
                 result = combat.start_battle()
                 if result == "victory":
                     self.is_fight_finished = True
+                    
             
                 elif result == "defeat":
                     print("Πεθανες πατα enter για να επιστρεψεις στο χωριο")
@@ -106,7 +107,68 @@ class Forest(Scene):
                     print("Πρεπει να διαλεξεις σε '1' η '2'")
                     choice = input("\n1. Παιρνεις το κλειδι \n2. Γυρνας στο χωριο")
                     if choice == "1":
-                        break
+                        return "cave"
                     else:
                         return "village"
                 
+class Cave(Scene):
+    def start(self,player):
+        print("-"*50)
+        print("Εχωντας σκοτωσει το γκομπλιν και εχωντας το κλειδι, βρισκεσαι μπροστα σε μια σπηλιά.")
+        print("Θα χρησιμοποιησεις το κλειδι για να την ανοιξεις; ")
+        print("1. Ναι")
+        print("2. Οχι, γυρνα στο χωριο")
+        choice = input("Επέλεξε:     ")
+        while choice != "1" or choice != "2":
+            print("Πρεπει να διαλεξεις σε '1' η '2'")
+            choice = input("Επέλεξε:     ")
+            if choice == "1":
+                return 'secret_room'
+            else:
+                return "village"
+            
+class SecretRoom(Scene):
+    def start(self,player):
+        print("Ανοιγοντας την πορτα της σπηλιας, αντικριζεις θησαυρους και μια δυσοιωνη ατμοσφαιρα.")
+        if self.is_fight_finished == False:
+            print("πλησιαζοντας τον θησαυρο, μια σκοτεινη φιγουρα εμφανιζεται και σε προκαλει σε μαχη.")
+            print("Εισαι ικανος για να αντιμετωπισεις τον εχθρο;")
+            print("1. Μάχη")
+            print("2. Φύγε")
+            choice = input("Επέλεξε:     ")
+            if choice == "1":
+                enemy = Troll()
+                combat = Combat(player, enemy)
+                result = combat.start_battle()
+                if result == "victory":
+                    self.is_fight_finished = True
+                    print("Κερδισες την μαχη και αποκτησες τον θησαυρο!")
+                    return "end"
+                elif result == "defeat":
+                    print("Πεθανες πατα enter για να επιστρεψεις στο χωριο")
+                    input("Press enter to continue")
+                    return "village"
+                
+                if self.is_fight_finished:
+                    print("Κερδιζοντας το αγριο troll και βλεπεις ενα μεταγιον γυρο απο το λαιμο του")
+                    print("Το παιρνεις;")
+                    print("1. Ναι")
+                    print("2. Οχι, γυρνα στο χωριο")
+                    choice = input("Επέλεξε:     ")
+                    while choice != "1" or choice != "2":
+                        print("Πρεπει να διαλεξεις σε '1' η '2'")
+                        choice = input("Επέλεξε:     ")
+                    if choice == "1":
+                        print("Παίρνοντας το μεταγιον, νιωθεις μια απιστευτη δυναμη να σε διαπερνα.")
+                        print("+20 ποντοι επιθεσης, +20 ποντοι αμυνας, +20 ποντοι υγειας, +20 ποντοι μανα")
+                        player.Attack += 20
+                        player.Defense += 20
+                        player.Health += 20
+                        player.Mana += 20
+                        return "village"
+                    else:
+                        return "village"
+        else:
+            print("Ολοκληρωσες την απστολη και εχεις αποκτησει τον θησαυρο, συγχαρητηρια!")
+            print("Γυρνας πισω στο χωριο.")
+            return "village"
